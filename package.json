@@ -1,10 +1,11 @@
 {
   "name": "men-stack-crud-recipe-app-project",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A recipe app to keep your recipes togather",
+  "main": "app.js",
   "type": "module",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "node server.js",
     "dev": "nodemon server.js"

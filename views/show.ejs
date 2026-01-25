@@ -1,0 +1,27 @@
+<h1><%= user.username %>'s Pantry</h1>
+
+<% if (user.pantry.length === 0) { %>
+  <p>>There are no items in your pantry</a></p>
+<% } else { %>
+  <ul>
+    <% user.pantry.forEach(item => { %>
+      <li>
+        <strong><%= item.name %></strong><% if (item.quantity != null) {%>
+        -QTY: <%= item.quantity %><% } %><% if (item.expirationDate != null) { %>
+        -Expires: <%= item.expirationDate.toDateString() %><% } %>
+        <form action="/users/<%= user._id %>/foods/<%= item._id %>?_method=DELETE" method="POST" style="display:inline;">
+          <button type="submit">Delete</button>
+        </form>
+        <a href="/users/<%= user._id %>/foods/<%= item._id %>/edit">Edit</a>
+      </li>
+    <% }) %>
+  </ul>
+<% } %>
+
+<a href="/users/<%= user._id %>/foods/new"> Back To Community</a>
+
+<ul>
+    <% users.forEach(user => { %>
+    <li> <%= user.username %> </li>
+    <% }) %> 
+</ul>

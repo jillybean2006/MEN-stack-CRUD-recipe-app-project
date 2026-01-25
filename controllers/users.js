@@ -1,78 +1,37 @@
 const express = require('express');
-const bcrypt = require('bcrypt');
 const router = express.Router();
-
 
 const User = require('../models/user.js');
 
-router.get('/sign-up', (req, res) => {
-    res.render('auth/sign-up.ejs');
-});
 
-
-
-router.get('/sign-out', (req, res) => {
-    req.session.destroy();
-    res.redirect('/');
-
-});
-
-
-router.get('/sign-in', (req, res) => {
-    res.render('auth/sign-in.ejs');
-});
-
-
-router.post('/sign-up', async (req, res) => {
+async function index(req, res) {
     try {
-        const userInDatabase = await User.findOne({ username: req.body.username });
-        if (userInDatabase) {
-            return res.send('Username taken.');
-        }}
-    });
+        const users = await User.find({});
+        res.render('index.ejs', {users});
+    } catch (error) {
+    res.redirect('/');
+    }
 
+}
 
-     if (req.body.password !== req.body.confirmPassword) {
-        return res.send('Password and confirm password must match');
-     }
-
-
-     const hashedPassword = bcrypt.hashSync(req.body.password, 10);
-     req.body.password - hashedPassword;
-
-     await User.create(req.body);
-
-     res.redirect('/auth/sign-in');
-
-     router.post('/sign-in', async (req, res) => {
-        try {
-            const userInDatabase = await User.findOne({ username: req.body.username });
-            if (!userInDatabase) {
-                return res.send('Login failed.');
-            }
-        };
-
-         
-
-            const validPassword = bcrypt.compareSync(
-                req.body.password,
-                userInDatabase.password
-            );
-
-            if (!validPassword) {
-                return res.send('Login failed.');
-            }
-
-
-            req.session.user = {
-                username: userInDatabase.username,
-                _id: userInDatabase._id
-            };
-
-
-            res.redirect(`/user/${req.session.user._id}/foods`); 
-        } catch (error) {
+async function show(req, res) {
+    try {
+        const user = await User.findById(req.params.userId).populate('pantry');
+        res.render('show.ejs', { user });
         res.redirect('/');
-        });
-            
+}}
+
+
+
+router.get ('/',index)
+router.get('/:userId',show)
+
+
+
+
+
 module.exports = router;
+
+
+
+

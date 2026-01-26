@@ -1,5 +1,5 @@
-<%- include('../partials/head') %>
-<%- include('../partials/nav') %>
+<%- include('../head') %>
+<%- include('../nav') %>
 
 <div class="container page" style="max-width: 980px;">
   <div class="d-flex justify-content-between align-items-start gap-3 mb-3">
@@ -11,8 +11,8 @@
     </div>
 
     <div class="d-flex gap-2">
-      <a class="btn btn-outline-primary" href="/foods/<%= food._id %>/edit">Edit</a>
-      <form action="/foods/<%= food._id %>?_method=DELETE" method="POST">
+      <a class="btn btn-outline-primary" href="/users/<%= user._id %>/foods/<%= food._id %>/edit">Edit</a>
+      <form action="/users/<%=user._id %>/foods/<%= food._id %>?_method=DELETE" method="POST">
         <button class="btn btn-outline-danger" type="submit">Delete</button>
       </form>
     </div>
@@ -55,4 +55,8 @@
   </div>
 </div>
 
-<%- include('../partials/footer') %>
+
+
+
+
+<%- include('../footer') %>

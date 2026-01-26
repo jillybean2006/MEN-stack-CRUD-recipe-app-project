@@ -56,7 +56,7 @@ router.post('/', upload.single('image'), async (req, res) => {
     }
 
     const created = await Food.create(newFood);
-    res.redirect(`/users/${req.user._id}/foods/${created._id}`);
+    res.redirect(`/users/${userId}/foods/${created._id}`)
   } catch (err) {
     console.log(err);
     res.send('Error creating recipe');
@@ -118,7 +118,7 @@ router.put('/:id', upload.single('image'), async (req, res) => {
 
     if (!updated) return res.send('Recipe not found');
 
-    res.redirect(`/foods/${updated._id}`);
+    res.redirect(`/users/${userId}/foods/${updated._id}`)
   } catch (err) {
     console.log(err);
     res.send('Error updating recipe');
@@ -126,15 +126,16 @@ router.put('/:id', upload.single('image'), async (req, res) => {
 });
 
 
-router.delete('/foodId', async (req, res) => {
+router.delete('/:foodId', async (req, res) => {
   try {
-    await Food.findOneAndDelete(`/users/${req.params.userId}/foods`)
-    res.redirect('/foods');
+    const userId = getUserId(req)
+    await Food.findByIdAndDelete(req.params.foodId)
+    res.redirect(`/users/${userId}/foods`)
   } catch (err) {
-    console.log(err);
-    res.send('Error deleting recipe');
+    console.log(err)
+    res.send('Error deleting recipe')
   }
-});
+})
    
 
 export default router;

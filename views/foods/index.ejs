@@ -14,7 +14,7 @@
   <div class="row g-3">
     <% foods.forEach(food => { %>
       <div class="col-12 col-md-6 col-lg-4">
-        <a href="/users/<%= user._id %>/foods" class="text-decoration-none text-dark">
+         <a href="/users/<%= user._id %>/foods/<%= food._id%>"text-decoration-none text-dark">
           <div class="card shadow-sm border-0 h-100">
             <% if (food.imageUrl) { %>
               <img src="<%= food.imageUrl %>" class="card-img-top" alt="recipe image">

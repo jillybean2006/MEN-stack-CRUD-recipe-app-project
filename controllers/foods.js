@@ -1,8 +1,9 @@
-const express = require('express');
-const router = express.Router();
+import express from 'express';
+const router = express.Router({ mergeParams: true })
 
-const Food = require('../models/food');
-const upload = require('../middleware/upload');
+import Food from '../models/foods.js';
+import upload from '../middleware/upload.js'
+
 
 function getUserId(req) {
   return req.session?.user?._id || req.session?.userId;
@@ -55,7 +56,7 @@ router.post('/', upload.single('image'), async (req, res) => {
     }
 
     const created = await Food.create(newFood);
-    res.redirect(`/foods/${created._id}`);
+    res.redirect(`/users/${req.user._id}/foods/${created._id}`);
   } catch (err) {
     console.log(err);
     res.send('Error creating recipe');
@@ -125,16 +126,16 @@ router.put('/:id', upload.single('image'), async (req, res) => {
 });
 
 
-router.delete('/:id', async (req, res) => {
+router.delete('/foodId', async (req, res) => {
   try {
-    const userId = getUserId(req);
-
-    await Food.findOneAndDelete({ _id: req.params.id, owner: userId });
+    await Food.findOneAndDelete(`/users/${req.params.userId}/foods`)
     res.redirect('/foods');
   } catch (err) {
     console.log(err);
     res.send('Error deleting recipe');
   }
 });
+   
 
-module.exports = router;
+export default router;
+

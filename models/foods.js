@@ -1,8 +1,9 @@
-import express from 'express';
-import router from '../server';
+//import express from 'express';
+//import router from '../server';
 
 
-const mongoose = require('mongoose');
+//const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const ingredientSchema = new mongoose.Schema(
   {
@@ -25,6 +26,5 @@ const foodSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model('Food', foodSchema);
-
-export default router;
+const Food = mongoose.model('Food', foodSchema);
+export default Food;

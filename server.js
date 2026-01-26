@@ -57,6 +57,7 @@ app.use('/users/:userId/foods',foodsController)
 
 
 
+
 app.get('/', async(req, res) => {
   const User = require('./models/user')
 try {

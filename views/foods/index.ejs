@@ -1,10 +1,10 @@
-<%- include('../partials/head') %>
-<%- include('../partials/nav') %>
+
+<%- include('../nav.ejs') %>
 
 <div class="container page">
   <div class="d-flex align-items-center justify-content-between mb-3">
     <h1 class="h3 mb-0">My Recipes</h1>
-    <a class="btn btn-primary" href="/foods/new">+ New Recipe</a>
+    <a class="btn btn-primary" href="/users/<%= user._id %>/foods/new">+ New Recipe</a>
   </div>
 
   <% if (!foods.length) { %>
@@ -14,7 +14,7 @@
   <div class="row g-3">
     <% foods.forEach(food => { %>
       <div class="col-12 col-md-6 col-lg-4">
-        <a href="/foods/<%= food._id %>" class="text-decoration-none text-dark">
+        <a href="/users/<%= user._id %>/foods" class="text-decoration-none text-dark">
           <div class="card shadow-sm border-0 h-100">
             <% if (food.imageUrl) { %>
               <img src="<%= food.imageUrl %>" class="card-img-top" alt="recipe image">
@@ -38,4 +38,4 @@
   </div>
 </div>
 
-<%- include('../partials/footer') %>
+<%- include('../footer') %>

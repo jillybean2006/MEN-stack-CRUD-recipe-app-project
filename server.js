@@ -1,20 +1,27 @@
-const dotenv = require('dotenv');
+import dotenv from 'dotenv';
 dotenv.config();
-const express = require('express');
+import express from 'express';
 const app = express();
-const mongoose = require('mongoose');
-const methodOverride = require('method-override');
-const morgan = require('morgan');
-const session = require('express-session');
+import mongoose from 'mongoose';
+import methodOverride from 'method-override';
+import morgan from 'morgan';
+import session from 'express-session';
 
-const isSighnedIn = require('./middleware/is-signed-in');
-const passUserToView = require('./middleware/pass-user-to-view');
+import isSignedIn from './middleware/is-signed-in.js';
+import passUserToView from './middleware/pass-user-to-view.js';
 
 
 
-const usersController = require('./controllers/users');
-const foodsController = require('./controllers/foods');
-const authController = require('./controllers/auth')
+import usersController from './controllers/users.js';
+import foodsController from './controllers/foods.js';
+import authController from './controllers/auth.js';
+
+import path from 'path';
+import { fileURLToPath } from 'url';
+import router from './controllers/users.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 
 
@@ -43,7 +50,7 @@ app.use(
 
 app.use(passUserToView);
 app.use('/auth', authController);
-app.use(isSighnedIn);
+app.use(isSignedIn);
 
 app.use('/users',usersController)
 app.use('/users/:userId/foods',foodsController)
@@ -75,3 +82,6 @@ app.get('/vip-lounge', (req, res) => {
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
 });
+
+
+export default router;

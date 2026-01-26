@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 
-const User = require('../models/user.js');
+import User from '../models/user.js';
 
 
 
@@ -28,7 +28,7 @@ router.get('/',index)
 router.get('/:userId',show)
 
 
-module.exports = router;
+export default router;
 
 
 

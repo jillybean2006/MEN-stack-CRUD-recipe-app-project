@@ -1,39 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('../partials/head') %>
+<%- include('../partials/nav') %>
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Pantry</title>
-  </head>
-  <body>
-    <a href="/users/<%= user._id %>/foods/new">Add New Item</a>
-    <%- include('../partials/_navbar.ejs') %>
-    <h1>Welcome to my Pantry</h1>
-    <p>This is your personal pantry manager.</p>
+<div class="container page">
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h1 class="h3 mb-0">My Recipes</h1>
+    <a class="btn btn-primary" href="/foods/new">+ New Recipe</a>
+  </div>
 
+  <% if (!foods.length) { %>
+    <div class="alert alert-light border">No recipes yet. Add your first one!</div>
+  <% } %>
 
-<h1><%= user.username %>'s Pantry</h1>
+  <div class="row g-3">
+    <% foods.forEach(food => { %>
+      <div class="col-12 col-md-6 col-lg-4">
+        <a href="/foods/<%= food._id %>" class="text-decoration-none text-dark">
+          <div class="card shadow-sm border-0 h-100">
+            <% if (food.imageUrl) { %>
+              <img src="<%= food.imageUrl %>" class="card-img-top" alt="recipe image">
+            <% } else { %>
+              <div class="card-img-top bg-light d-flex align-items-center justify-content-center">
+                <span class="text-muted">No image</span>
+              </div>
+            <% } %>
 
-<a href="/users/<%= user._id %>/foods/new"> Add New Item</a>
-<% if (user.pantry.length === 0) { %>
-  <p>>There are no items in your pantry</a></p>
-<% } else { %>
-  <ul>
-    <% user.pantry.forEach(item => { %>
-      <li>
-        <strong><%= item.name %></strong><% if (item.quantity != null) {%>
-        -QTY: <%= item.quantity %><% } %>
-<a href="/users/<%= user._id %>/foods/<%= item._id %>/edit">Edit</a>
-
-        <form action="/users/<%= user._id %>/foods/<%= item._id %>?_method=DELETE" method="POST" style="display:inline;">
-          <button type="submit">Delete</button>
-        </form>
-      </li>
+            <div class="card-body">
+              <h2 class="h5 mb-1"><%= food.name %></h2>
+              <% if (food.description) { %>
+                <p class="text-muted mb-2"><%= food.description %></p>
+              <% } %>
+              <span class="badge badge-soft"><%= food.ingredients.length %> ingredients</span>
+            </div>
+          </div>
+        </a>
+      </div>
     <% }) %>
-  </ul>
-<% } %>
+  </div>
+</div>
 
-
-        </body>
-        </html>
+<%- include('../partials/footer') %>

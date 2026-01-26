@@ -74,4 +74,4 @@ router.post('/sign-in', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

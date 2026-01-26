@@ -1,20 +1,20 @@
-const dotenv = require('dotenv');
+import dotenv from'dotenv';
 dotenv.config();
-const express = require('express');
-const app = express();
-const mongoose = require('mongoose');
-const methodOverride = require('method-override');
-const morgan = require('morgan');
-const session = require('express-session');
 
-const isSighnedIn = require('./middleware/is-signed-in');
-const passUserToView = require('./middleware/pass-user-to-view');
+import express from 'express';
+import mongoose from 'mongoose';
+import methodOverride from 'method-override';
+import morgan from 'morgan';
+import session from 'express-session';
+
+import isSignedIn from './middleware/is-signed-in.js';
+import  passUserToView  from './middleware/pass-user-to-view.js';
 
 
 
-const usersController = require('./controllers/users');
-const foodsController = require('./controllers/foods');
-const authController = require('./controllers/auth')
+import usersController from './controllers/users.js';
+import recipesController  from './controllers/recipes.js';
+import authController  from './controllers/auth.js';
 
 
 
@@ -43,32 +43,13 @@ app.use(
 
 app.use(passUserToView);
 app.use('/auth', authController);
-app.use(isSighnedIn);
+app.use(isSignedIn);
 
-app.use('/users',usersController)
-app.use('/users/:userId/foods',foodsController)
-
-
-
-app.get('/', async(req, res) => {
-  const User = require('./models/user')
-try {
-  const users = await User.find({})
- res.render('index.ejs', {
-  users });
-}catch(error){
-  console.log(error)
-  res.render('index.ejs',{users:[]})
-}});
+app.use('/users', usersController);
+app.use('/users/:userId/foods',recipesController)
 
 
-app.get('/vip-lounge', (req, res) => {
-  if (req.session.user) {
-    res.send(`Welcome to the party ${req.session.user.username}.`);
-  } else {
-    res.send('Sorry, no guests allowed.');
-  }
-});
+
 
 
 

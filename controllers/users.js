@@ -1,7 +1,20 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 
-const User = require('../models/user.js');
+import User from '../models/user.js';
+import mongoose from 'mongoose';
+
+
+app.get('/', async(req, res) => {
+  const User = require('./models/user')
+try {
+  const users = await User.find({})
+ res.render('index.ejs', {
+  users });
+}catch(error){
+  console.log(error)
+  res.render('index.ejs',{users:[]})
+}});
 
 
 async function index(req, res) {
@@ -18,8 +31,12 @@ async function show(req, res) {
     try {
         const user = await User.findById(req.params.userId).populate('pantry');
         res.render('show.ejs', { user });
+    } catch (error) {
         res.redirect('/');
+
 }}
+
+
 
 
 
@@ -30,7 +47,7 @@ router.get('/:userId',show)
 
 
 
-module.exports = router;
+export default router;
 
 
 

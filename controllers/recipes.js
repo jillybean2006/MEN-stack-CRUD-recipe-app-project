@@ -18,7 +18,7 @@ router.get('/new', function(req, res) {
 
 
 
-router.post('/', async function(req, res {
+router.post('/', async function(req, res) {
     const user = await User.findById(req.params.userId);
     user.pantry.push(req.body);
     await user.save();
@@ -61,4 +61,5 @@ router.put('/:foodId', async function (req, res) {
 })
 
 
-module.exports = router
+
+export default router;

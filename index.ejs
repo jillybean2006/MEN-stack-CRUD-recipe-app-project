@@ -1,0 +1,11 @@
+<h1>Explore Our Community</h1>
+
+<% if (!users.length) { %>
+  <p>There are no other users to display.</p>
+<% } else { %>
+  <ul>
+    <% users.forEach(user => { %>
+    <li> <%= user.username %> </li>
+    <% }) %>
+  </ul>
+<% } %>

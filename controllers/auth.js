@@ -4,16 +4,6 @@ const bcrypt = require('bcrypt');
 
 const User = require('../models/user.js');
 
-app.get('/vip-lounge', (req, res) => {
-  if (req.session.user) {
-    res.send(`Welcome to the party ${req.session.user.username}.`);
-  } else {
-    res.send('Sorry, no guests allowed.');
-  }
-});
-
-
-
 router.get('/sign-up', (req, res) => {
   res.render('auth/sign-up.ejs');
 });
@@ -29,11 +19,7 @@ router.get('/sign-out', (req, res) => {
 
 router.post('/sign-up', async (req, res) => {
   try {
-
-
-
-
-
+    
     const userInDatabase = await User.findOne({ username: req.body.username });
     if (userInDatabase) {
       return res.send('Username already taken.');
@@ -75,7 +61,7 @@ router.post('/sign-in', async (req, res) => {
       return res.send('Login failed. Please try again.');
     }
   
-    
+
     req.session.user = {
       username: userInDatabase.username,
       _id: userInDatabase._id
@@ -88,4 +74,4 @@ router.post('/sign-in', async (req, res) => {
   }
 });
 
-export default router;
+module.exports = router;

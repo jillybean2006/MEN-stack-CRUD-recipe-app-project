@@ -4,8 +4,8 @@
 <link rel="stylesheet" href="/stylesheets/style.css">
 
 
-<div class="container page">
-  <div class="d-flex align-items-center justify-content-between mb-3">
+<div class="containerPage">
+  <div class="containerHeader">
     <h1 class="h3 mb-0">My Recipes</h1>
     <a class="btn btn-primary" href="/users/<%= user._id %>/foods/new">+ New Recipe</a>
   </div>
@@ -14,7 +14,7 @@
     <div class="alert alert-light border">No recipes yet. Add your first one!</div>
   <% } %>
 
-  <div class="row g-3">
+  <div class="containerBody">
     <% foods.forEach(food => { %>
       <div class="col-12 col-md-6 col-lg-4">
          <a href="/users/<%= user._id %>/foods/<%= food._id%>"text-decoration-none text-dark">
@@ -40,7 +40,6 @@
     <% }) %>
   </div>
 </div>
-
 
 
 

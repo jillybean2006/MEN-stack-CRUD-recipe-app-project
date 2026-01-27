@@ -20,3 +20,12 @@ Recipe Keeper is a full-stack CRUD web app for saving your favorite recipes
 
 
 
+
+##Next steps
+.favorites 
+.ratings
+.searchable recipes
+.image upload
+
+
+

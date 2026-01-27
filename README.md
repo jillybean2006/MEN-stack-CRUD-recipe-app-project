@@ -5,14 +5,14 @@
 Recipe Keeper is a full-stack CRUD web app for saving your favorite recipes
 
 ## tech used
-.javaScript
-.Node.js
-.ejs
-.mongoose
-.mongoDb
-.css
-.flexbox
-.HTML
+-javaScript
+-Node.js
+-ejs
+-mongoose
+-mongoDb
+-css
+-flexbox
+-HTML
 
 ## Getting started
 
@@ -21,10 +21,10 @@ Recipe Keeper is a full-stack CRUD web app for saving your favorite recipes
 
 
 ##Next steps
-.favorites 
-.ratings
-.searchable recipes
-.image upload
+-favorites 
+-ratings
+-searchable recipes
+-image upload
 
 
 

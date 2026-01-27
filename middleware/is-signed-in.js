@@ -3,4 +3,3 @@ const isSignedIn = (req, res, next) => {
   res.redirect('/auth/sign-in');
 };
 export default isSignedIn;
-//module.exports = isSignedIn;

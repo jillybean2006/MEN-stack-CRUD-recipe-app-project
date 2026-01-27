@@ -1,0 +1,48 @@
+
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: beige;
+  color: olive;
+}
+
+
+.center-page {
+  min-height: 100vh; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.box {
+  background: olive;
+  padding: 20px;
+  border-radius: 12px;
+  width: 400px;
+  max-width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+
+button {
+  background: olive;
+  color: black;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+
+
+
+
+
+a {
+  color: black;
+  text-decoration: none;
+  padding: 20px, 20px;
+}

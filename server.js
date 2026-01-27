@@ -6,6 +6,8 @@ import mongoose from 'mongoose';
 import methodOverride from 'method-override';
 import morgan from 'morgan';
 import session from 'express-session';
+app.use(express.static('public'));
+
 
 import isSignedIn from './middleware/is-signed-in.js';
 import passUserToView from './middleware/pass-user-to-view.js';
@@ -20,12 +22,14 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import router from './controllers/users.js';
 
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 
 
 const port = process.env.PORT ? process.env.PORT : '3000';
+
 
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
@@ -83,6 +87,8 @@ app.get('/vip-lounge', (req, res) => {
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
 });
+
+
 
 
 export default router;

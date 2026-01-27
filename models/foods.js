@@ -1,8 +1,4 @@
-//import express from 'express';
-//import router from '../server';
 
-
-//const mongoose = require('mongoose');
 import mongoose from 'mongoose';
 
 const ingredientSchema = new mongoose.Schema(

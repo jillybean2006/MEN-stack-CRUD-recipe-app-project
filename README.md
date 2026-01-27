@@ -1,7 +1,6 @@
 # Recipe Keeper 
 
-![image alt](<img width="487" height="457" alt="image" src="https://github.com/user-attachments/assets/5d57316f-2d9a-4c16-8b84-92232607af58" />
-)
+![image alt](https://private-user-images.githubusercontent.com/212642777/540803063-a518e89c-0f3a-438f-b514-f759c8f782bc.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Njk0ODI0NDcsIm5iZiI6MTc2OTQ4MjE0NywicGF0aCI6Ii8yMTI2NDI3NzcvNTQwODAzMDYzLWE1MThlODljLTBmM2EtNDM4Zi1iNTE0LWY3NTljOGY3ODJiYy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMTI3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDEyN1QwMjQ5MDdaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0yYzJjMDVlNGFmMDRmNTc4N2Q4ZWU3ODBkOGRlZGE0ZjI4MTVjZjgxYTExZGRkYjllNDY1YWZmZjA1ZmNmZmE0JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.WO2wVAdyH1H1i8MCqnJ-D50LBn8s3294SfBkdqW4p_4)
 
 Recipe Keeper is a full-stack CRUD web app for saving your favorite recipes
 
